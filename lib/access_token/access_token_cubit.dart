@@ -6,7 +6,7 @@ class AccessTokenCubit extends Cubit<String?> {
     _read();
   }
 
-  final _repository = AccessTokenRepository();
+  final _repository = const AccessTokenRepository();
 
   Future<void> delete() async {
     await _repository.delete();
