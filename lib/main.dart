@@ -5,7 +5,13 @@ import 'package:qiita/app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AccessTokenManager.instance.cache();
+  AccessTokenManager.instance.accessTokenChanges.listen((accessToken) {
+    debugPrint(accessToken);
+  });
+
+  await AccessTokenManager.instance.ensureInitialized();
+
+  debugPrint(AccessTokenManager.instance.accessToken);
 
   runApp(const App());
 }

@@ -12,12 +12,6 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: () {
-                debugPrint(AccessTokenManager.instance.accessToken);
-              },
-              child: Text('accessToken'),
-            ),
-            TextButton(
               onPressed: () async {
                 await AccessTokenManager.instance.delete();
               },
