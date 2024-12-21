@@ -1,0 +1,7 @@
+on: push
+jobs:
+  analyze:
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+      - run: flutter analyze
