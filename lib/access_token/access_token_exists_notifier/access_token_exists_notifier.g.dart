@@ -7,7 +7,7 @@ part of 'access_token_exists_notifier.dart';
 // **************************************************************************
 
 String _$accessTokenExistsNotifierHash() =>
-    r'8dc42c6dbc4763d67c0c3c39982e44e7c3203fc5';
+    r'c7fa0de37f2b3c88ddc51e9bd21a73ab1d108f8d';
 
 /// See also [AccessTokenExistsNotifier].
 @ProviderFor(AccessTokenExistsNotifier)

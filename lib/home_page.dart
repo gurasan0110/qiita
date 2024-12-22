@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qiita/access_token/access_token_exists_notifier/access_token_exists_notifier.dart';
 import 'package:qiita/access_token/access_token_manager.dart';
+import 'package:qiita/gen/assets.gen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,6 +10,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Assets.images.logo.image(height: 30),
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

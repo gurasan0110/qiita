@@ -8,6 +8,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff55c500)),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
