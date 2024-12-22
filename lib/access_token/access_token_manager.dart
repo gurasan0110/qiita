@@ -1,15 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:qiita/access_token/access_token_repository.dart';
 
 class AccessTokenManager {
   AccessTokenManager._();
 
   static final instance = AccessTokenManager._();
 
-  final _storage = const FlutterSecureStorage();
-  final _key = 'ACCESS_TOKEN';
-
+  final _repository = const AccessTokenRepository();
   final _accessTokenChanges = StreamController<String?>.broadcast();
 
   String? _accessToken;
@@ -27,18 +25,18 @@ class AccessTokenManager {
   }
 
   Future<void> delete() async {
-    await _storage.delete(key: _key);
+    await _repository.delete();
     await _cache();
   }
 
   Future<void> write({required String accessToken}) async {
-    await _storage.write(key: _key, value: accessToken);
+    await _repository.write(accessToken: accessToken);
     await _cache();
   }
 
   Future<void> _cache({bool shouldSend = true}) async {
     final oldAccessToken = _accessToken;
-    final newAccessToken = await _storage.read(key: _key);
+    final newAccessToken = await _repository.read();
     _accessToken = newAccessToken;
     if (shouldSend && oldAccessToken != newAccessToken) {
       _accessTokenChanges.add(newAccessToken);

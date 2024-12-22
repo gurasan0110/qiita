@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qiita/access_token/access_token_exists_notifier/access_token_exists_notifier.dart';
-import 'package:qiita/access_token/access_token_manager.dart';
+import 'package:qiita/auth/auth_service.dart';
 import 'package:qiita/gen/assets.gen.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,16 +27,15 @@ class HomePage extends StatelessWidget {
             }),
             TextButton(
               onPressed: () async {
-                await AccessTokenManager.instance.delete();
+                await AuthService().auth();
               },
-              child: Text('delete'),
+              child: Text('auth'),
             ),
             TextButton(
               onPressed: () async {
-                await AccessTokenManager.instance
-                    .write(accessToken: 'accessToken');
+                await AuthService().revoke();
               },
-              child: Text('write'),
+              child: Text('revoke'),
             ),
           ],
         ),
