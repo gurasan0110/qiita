@@ -6,6 +6,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
       - run: |
-        chmod +x setup_env.sh
+        chmod +x ./setup_env.sh
         ./setup_env.sh ${{ secrets.CLIENT_ID }} ${{ secrets.CLIENT_SECRET }}
       - run: flutter analyze
