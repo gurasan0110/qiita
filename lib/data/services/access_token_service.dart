@@ -16,13 +16,21 @@ class AccessTokenService {
       'client_secret': Client.secret,
       'code': code,
     };
+
     final response = await _client.post('/access_tokens', data: data);
-    return response.data['token'];
+    final accessToken = response.data['token'] as String?;
+    if (accessToken == null) {
+      throw Exception('accessToken == null');
+    }
+
+    return accessToken;
   }
 
-  Future<bool> deleteAccessTokens({required String accessToken}) async {
+  Future<void> deleteAccessTokens({required String accessToken}) async {
     final response = await _client.delete('/access_tokens/$accessToken');
-    return response.statusCode == 204;
+    if (response.statusCode != 204) {
+      throw Exception('response.statusCode != 204');
+    }
   }
 
   Future<String?> read() {

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:qiita/data/http_client.dart';
 import 'package:qiita/utils/constants/client.dart';
@@ -7,7 +6,7 @@ import 'package:uuid/uuid.dart';
 class AuthService {
   const AuthService();
 
-  Future<String?> authorize() async {
+  Future<String> authorize() async {
     final scope = 'read_qiita write_qiita';
     final requestState = const Uuid().v4();
     final endpoint = '${HttpClient().options.baseUrl}/oauth/authorize';
@@ -15,15 +14,18 @@ class AuthService {
       url: '$endpoint?client_id=${Client.id}&scope=$scope&state=$requestState',
       callbackUrlScheme: 'qiita',
     );
-    debugPrint('urlString: $urlString');
     final url = Uri.parse(urlString);
 
     final responseState = url.queryParameters['state'];
     if (requestState != responseState) {
-      debugPrint('requestState != responseState');
-      return null;
+      throw Exception('requestState != responseState');
     }
 
-    return url.queryParameters['code'];
+    final code = url.queryParameters['code'];
+    if (code == null) {
+      throw Exception('code == null');
+    }
+
+    return code;
   }
 }

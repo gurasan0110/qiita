@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qiita/ui/widgets/home/widgets/home_page.dart';
+import 'package:qiita/ui/widgets/home_page/widgets/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
