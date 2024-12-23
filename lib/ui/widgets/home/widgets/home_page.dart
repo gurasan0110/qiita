@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qiita/access_token/access_token_exists_notifier/access_token_exists_notifier.dart';
-import 'package:qiita/auth/auth_service.dart';
+import 'package:qiita/data/repositories/access_token_repository.dart';
 import 'package:qiita/gen/assets.gen.dart';
+import 'package:qiita/ui/providers/access_token_is_not_null_notifier_provider/access_token_is_not_null_notifier_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,19 +21,20 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Consumer(builder: (context, ref, child) {
-              final accessTokenExists =
-                  ref.watch(accessTokenExistsNotifierProvider);
-              return Text(accessTokenExists.toString());
+              final accessTokenIsNotNull = ref.watch(
+                accessTokenIsNotNullNotifierProvider,
+              );
+              return Text(accessTokenIsNotNull.toString());
             }),
             TextButton(
               onPressed: () async {
-                await AuthService().auth();
+                await AccessTokenRepository().issue();
               },
-              child: Text('auth'),
+              child: Text('issue'),
             ),
             TextButton(
               onPressed: () async {
-                await AuthService().revoke();
+                await AccessTokenRepository().revoke();
               },
               child: Text('revoke'),
             ),

@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'access_token_exists_notifier.dart';
+part of 'access_token_is_not_null_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accessTokenExistsNotifierHash() =>
-    r'c7fa0de37f2b3c88ddc51e9bd21a73ab1d108f8d';
+String _$accessTokenIsNotNullNotifierHash() =>
+    r'0495524f8d5cdc354788ac274f73a99d74c8a98d';
 
-/// See also [AccessTokenExistsNotifier].
-@ProviderFor(AccessTokenExistsNotifier)
-final accessTokenExistsNotifierProvider =
-    NotifierProvider<AccessTokenExistsNotifier, bool>.internal(
-  AccessTokenExistsNotifier.new,
-  name: r'accessTokenExistsNotifierProvider',
+/// See also [AccessTokenIsNotNullNotifier].
+@ProviderFor(AccessTokenIsNotNullNotifier)
+final accessTokenIsNotNullNotifierProvider =
+    NotifierProvider<AccessTokenIsNotNullNotifier, bool>.internal(
+  AccessTokenIsNotNullNotifier.new,
+  name: r'accessTokenIsNotNullNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$accessTokenExistsNotifierHash,
+      : _$accessTokenIsNotNullNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AccessTokenExistsNotifier = Notifier<bool>;
+typedef _$AccessTokenIsNotNullNotifier = Notifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
