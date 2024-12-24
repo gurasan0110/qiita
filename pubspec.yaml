@@ -32,3 +32,8 @@ flutter:
   assets:
     - .env
     - assets/images/
+
+flutter_gen:
+  assets:
+    exclude:
+      - .env
